@@ -1,0 +1,15 @@
+generated: '2026-10-16'
+method: searched
+generator: extract-docs-artifacts.py (local)
+source: https://docs.dappier.com/quickstart.md
+sources:
+- https://docs.dappier.com/quickstart.md
+description: Authentication for Dappier API
+schemes:
+- type: http-bearer
+  name: Bearer
+  evidence: 'headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}'
+  location: header
+  header: Authorization
+  how_to_obtain: Obtain API key from Dappier Platform under Settings > Profile > API Keys.
+docs: https://docs.dappier.com/quickstart.md

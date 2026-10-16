@@ -1,0 +1,22 @@
+{
+  "provider": "dappier",
+  "sources": [
+    "dappier-openapi.json"
+  ],
+  "outputs": [
+    "dappier-app-api-openapi.yml"
+  ],
+  "archived": [
+    "archived openapi/dappier-openapi.json"
+  ],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "dappier-openapi.json: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "dappier-openapi.json: tagged paths POST /app/aimodel/{ai_model_id} -> App",
+    "dappier-openapi.json: tagged paths POST /app/v2/search -> App",
+    "dappier-openapi.json: declared missing tag: App",
+    "apis.yml register: written (+1 apis, 1 total)"
+  ],
+  "skipped": []
+}

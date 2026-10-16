@@ -1,0 +1,5 @@
+generated: 2026-10-16
+method: derived
+source: openapi/dappier-openapi.json
+overlay: "1.0.0"
+actions: []

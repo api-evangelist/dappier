@@ -1,0 +1,8 @@
+generated: '2026-10-16'
+method: probed
+source: https://sales-agent.dappier.com/.well-known/mcp.json
+deployment:
+  mode: remote
+  endpoint: https://sales-agent.dappier.com/mcp
+  auth: unknown
+  verified: probed

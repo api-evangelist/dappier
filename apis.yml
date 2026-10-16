@@ -1,23 +1,120 @@
 aid: dappier
 name: Dappier
-description: 'Dappier is a company surfaced via the API Evangelist harvest backlog (source: g2-catalog)
-  and added to the network as a stub for full-pipeline profiling.'
+image: https://assets.dappier.com/logos/DappierMini.jpg
+description: Dappier provides AI-driven conversational ad experiences for publishers, enabling them to monetize content through agentic ads and
+  AI answer interfaces. It offers a platform where advertisers can reach consumers via AI agents, with a storefront that allows autonomous purchases
+  without signup. The service includes tools for launching AI answer experiences, managing ad formats, and integrating with publisher workflows,
+  aiming to create new revenue streams in the AI era.
 url: https://raw.githubusercontent.com/api-evangelist/dappier/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:g2-catalog
-x-tier: stub
-x-tier-reason: harvest
+x-tier: profiled
+x-tier-reason: enrichment pass 2026-10-16 (modular-v1; was harvest)
 specificationVersion: '0.20'
 created: '2026-10-16'
 modified: '2026-10-16'
 tags:
 - Company
-apis: []
+- AI
+- Advertising
+- Monetization
+- Publishers
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: Vocabulary
+  url: vocabulary/dappier-vocabulary.yml
+- type: DataModel
+  url: data-model/dappier-data-model.yml
+- type: AgenticAccess
+  url: agentic-access/dappier-agentic-access.yml
+- type: Spectral
+  url: rules/dappier-rules.yml
+- type: Authentication
+  url: authentication/dappier-authentication.yml
+- type: Conformance
+  url: conformance/dappier-conformance.yml
+- type: Overlay
+  url: overlays/dappier-openapi-overlay.yaml
+- type: LLMsTxt
+  url: llms/dappier-llms.txt
+- type: AgentCard
+  url: a2a/dappier-a2a.yml
+- type: MCPServer
+  url: mcp/dappier-mcp.yml
+- type: WellKnown
+  url: well-known/dappier-well-known.yml
+- type: Hosts
+  url: hosts/dappier-hosts.yml
+- type: Vendors
+  url: vendors/dappier-vendors.yml
+- type: SDKs
+  url: packages/dappier-packages.yml
+- type: Packages
+  url: packages/dappier-packages.yml
+- type: GitHubOrganization
+  url: https://github.com/DappierAI
+- type: DomainSecurity
+  url: security/dappier-domain-security.yml
 - type: Website
   url: https://dappier.com/
+- type: DeveloperPortal
+  url: https://dappier.com/developer
+- type: Documentation
+  url: https://dappier.com/docs
+- type: APIReference
+  url: https://dappier.com/docs
+- type: GettingStarted
+  url: https://dappier.com/developer
+- type: Support
+  url: https://dappier.com/contact
+- type: Blog
+  url: https://dappier.com/blog
+- type: Pricing
+  url: https://dappier.com/pricing
+- type: TermsOfService
+  url: https://dappier.com/terms
+- type: PrivacyPolicy
+  url: https://dappier.com/privacy
+apis:
+- aid: dappier:dappier-app-api
+  name: Dappier App API
+  description: The App API from Dappier — 2 operation(s) for app.
+  humanURL: https://docs.dappier.com/api-reference/endpoint/real-time-search
+  baseURL: https://api.dappier.com
+  tags:
+  - App
+  properties:
+  - type: OpenAPI
+    url: openapi/dappier-app-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/dappier-query-request-schema.json
+  - type: JSONSchema
+    url: json-schema/dappier-query-response-schema.json
+x-coverage:
+  state: none
+  reason: no-developer-program
+  method: derived
+  generated: '2026-10-16'
+  generator: derive-coverage.py (pre-flight evidence)
+  detail: the company publishes no developer documentation host and no machine-readable contract on its own domain
+  evidence:
+  - url: https://docs.dappier.com/mcp
+    status: null
+  - url: https://api.dappier.com/mcp
+    status: 403
+  - url: https://marketplace.dappier.com/mcp
+    status: 403
+  - url: https://platform.dappier.com/mcp
+    status: 403
+  - url: https://dappier.com/
+    status: 200
+x-enrichment:
+  date: '2026-10-16'
+  status: enriched
+  artifacts_added: 23
+  pass: modular-v1
+  engine: identity=local,contract=local,surfaces=local,docs=local,regulatory=local

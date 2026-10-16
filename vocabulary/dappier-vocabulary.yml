@@ -1,0 +1,22 @@
+generated: '2026-10-16'
+method: derived
+generator: derive-vocabulary.py
+source: openapi/dappier-openapi.json
+vocabulary:
+  name: Dappier Domain Vocabulary
+  description: 'Terms declared by Dappier''s own API contract: its resource groups, objects and enumerations, with the contract''s definitions.
+    Derived, not authored.'
+  version: '2026-10-16'
+  terms:
+  - term: QueryRequest
+    definition: Referenced by this document but never defined in it. API Evangelist added this empty placeholder so the document resolves; the
+      shape is unknown and is NOT a claim about the API.
+    tags:
+    - Object
+    source: openapi/dappier-openapi.json#/components/schemas/QueryRequest
+  - term: QueryResponse
+    definition: Referenced by this document but never defined in it. API Evangelist added this empty placeholder so the document resolves; the
+      shape is unknown and is NOT a claim about the API.
+    tags:
+    - Object
+    source: openapi/dappier-openapi.json#/components/schemas/QueryResponse

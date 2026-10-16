@@ -1,0 +1,214 @@
+{
+ "openapi": "3.1.0",
+ "info": {
+  "title": "Dappier Datamodel API",
+  "version": "0.1.0"
+ },
+ "servers": [
+  {
+   "url": "https://api.dappier.com"
+  }
+ ],
+ "paths": {
+  "/app/aimodel/{ai_model_id}": {
+   "post": {
+    "summary": "Query Real-Time Search",
+    "description": "Access real-time search with Dappier's AI models \u2014 from live web search and breaking news to stock prices and financial insights. Fast, reliable, and ready for monetization.",
+    "operationId": "query_RealTimeData_data",
+    "parameters": [
+     {
+      "name": "ai_model_id",
+      "in": "path",
+      "required": true,
+      "description": "The ID of the AI model to query (e.g., am_01j06ytn18ejftedz6dyhz2b15). Browse and find AI models in the [Dappier Marketplace](https://platform.dappier.com/marketplace).",
+      "schema": {
+       "type": "string"
+      }
+     }
+    ],
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/QueryRequest"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "Returns HTTP Status Code 200 (OK).",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/QueryResponse"
+        }
+       }
+      }
+     }
+    },
+    "security": [
+     {
+      "ApiKeyBearer": []
+     }
+    ]
+   }
+  },
+  "/app/v2/search": {
+   "post": {
+    "summary": "Get AI Article Recommendations",
+    "description": "Retrieve articles based on queries or URLs, powered by semantic search.",
+    "parameters": [
+     {
+      "name": "data_model_id",
+      "in": "query",
+      "required": true,
+      "description": "Data model ID, starting with `dm_`. Browse and find data models in the [Dappier Marketplace](https://platform.dappier.com/marketplace).",
+      "schema": {
+       "type": "string"
+      }
+     }
+    ],
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object",
+        "properties": {
+         "query": {
+          "type": "string",
+          "description": "Natural language query, keyword, or URL. If a URL is specified, our AI analyzes the page context, summarizes it, and provides semantic recommendations based on the content."
+         },
+         "similarity_top_k": {
+          "type": "integer",
+          "default": 9,
+          "description": "The number of articles to return."
+         },
+         "ref": {
+          "type": "string",
+          "description": "The site domain where AI recommendations are being displayed. Example format: dappier.com."
+         },
+         "num_articles_ref": {
+          "type": "integer",
+          "default": 0,
+          "description": "The minimum number of articles from the `ref` domain specified above. The rest of the articles will come from other sites within the RAG model."
+         },
+         "search_algorithm": {
+          "type": "string",
+          "enum": [
+           "most_recent",
+           "semantic",
+           "most_recent_semantic",
+           "trending"
+          ],
+          "description": "The search algorithm for retrieving articles.\n `most_recent`: Retrieves the most recent articles by publication date. `semantic` (default): Retrieves contextually relevant articles based on the query or the page content from the provided URL. `most_recent_semantic`: Performs semantic search and retrieves the most recent articles by publication date. `trending`: Performs a trending search and retrieves the most relevant articles to trending keywords in the past 24 hours."
+         },
+         "page": {
+          "type": "integer",
+          "default": 1,
+          "description": "Page number for pagination."
+         },
+         "num_results": {
+          "type": "integer",
+          "default": 10,
+          "description": "Number of results per page."
+         }
+        },
+        "required": [
+         "query"
+        ]
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Successful response with article recommendations.",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "properties": {
+          "status": {
+           "type": "string",
+           "description": "The status of the API response."
+          },
+          "response": {
+           "type": "object",
+           "properties": {
+            "query": {
+             "type": "string",
+             "description": "The query string used for the recommendations."
+            },
+            "results": {
+             "type": "array",
+             "items": {
+              "type": "object",
+              "properties": {
+               "author": {
+                "type": "string",
+                "description": "The author of the article."
+               },
+               "image_url": {
+                "type": "string",
+                "description": "The image URL for the article. You can add &w=400&h=200 to the end of the URL with your desired size values to automatically resize and optimize delivery of the image."
+               },
+               "preview_content": {
+                "type": "string",
+                "description": "A short preview of the article content."
+               },
+               "pubdate": {
+                "type": "string",
+                "description": "The publication date of the article."
+               },
+               "pubdate_unix": {
+                "type": "integer",
+                "description": "The publication date in UNIX timestamp."
+               },
+               "score": {
+                "type": "number",
+                "description": "The relevance score of the article."
+               },
+               "site": {
+                "type": "string",
+                "description": "The source site of the article."
+               },
+               "site_domain": {
+                "type": "string",
+                "description": "The domain of the site."
+               },
+               "source_url": {
+                "type": "string",
+                "description": "The tracking URL for the article."
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "components": {
+  "schemas": {
+   "QueryRequest": {
+    "type": "object",
+    "description": "Referenced by this document but never defined in it. API Evangelist added this empty placeholder so the document resolves; the shape is unknown and is NOT a claim about the API.",
+    "x-ae-placeholder": true
+   },
+   "QueryResponse": {
+    "type": "object",
+    "description": "Referenced by this document but never defined in it. API Evangelist added this empty placeholder so the document resolves; the shape is unknown and is NOT a claim about the API.",
+    "x-ae-placeholder": true
+   }
+  }
+ }
+}
